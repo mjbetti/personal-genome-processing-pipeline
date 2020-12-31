@@ -1,2 +1,3 @@
 # personal-genome-processing-pipeline
 ## Introduction
+The inspiration for this processing workflow came from receiving a clinical-grade whole genome sequence (sequenced on the Illumina NovaSeq platform) through the company Dante Labs. While Dante Labs provides its customers with alignments (as a BAM file) and variant calls (in the form of SNP, indel, and CNV VCF files), all of these processed file are aligned to GRCh37 (hg19), not the most recent human genome build (GRCh38, or hg38). While one could perhaps more simply use UCSC LiftOver to lift the hg19 coordinates over to hg38, I wrote this workflow both as a learning exercise, as well as 
