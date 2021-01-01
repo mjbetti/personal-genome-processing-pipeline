@@ -73,3 +73,65 @@ fastqc -o $FASTQC_OUT $FASTQ1 $FASTQ2
 Once this script is completely finished running, the most significant files that can be used for downstream analysis will be **$MAIN_DIR\/$OUT_PREF\.sorted.merged.sorted.marked_duplicates.recalibrated.bam** (BAM containing your aligned reads), **$MAIN_DIR\/$OUT_PREF\.recal.snp.indel.vcf.gz** (VCF cotaining SNPs and indels), **$MAIN_DIR\/$OUT_PREF\.snp.vcf.gz** (VCF containing SNPs only), and **$MAIN_DIR\/$OUT_PREF\.indel.vcf.gz** (VCF containing indels only). 
 
 ## Initial variant annotation using GenomeChronicler
+### Installing Golang and Singlularity (paraphrased from Golang and Singularity documentation)
+The easiest way to run GenomeChronicler is via a Singularity container, which in turn requires a Golang installation. Running Singularity containers is very similar to Docker, and more information about Singularity can be found at the following link: https://sylabs.io/guides/3.1/user-guide/quick_start.html. Go installation documentation: https://golang.org/doc/install
+
+For use with an Ubuntu Linux installation, one first needs to insure that all required development tools and libraries are installed on the system:
+```
+sudo apt-get update && \
+sudo apt-get install -y build-essential \
+libseccomp-dev pkg-config squashfs-tools cryptsetup
+```
+Install Golang if not already on your system. If you are updating from a older version, remove /usr/local/go before reinstalling the latest version:
+```
+export VERSION=1.14.9 OS=linux ARCH=amd64  #alter these variables as required to align with user system
+wget -O /tmp/go${VERSION}.${OS}-${ARCH}.tar.gz https://dl.google.com/go/go${VERSION}.${OS}-${ARCH}.tar.gz && \
+  sudo tar -C /usr/local -xzf /tmp/go${VERSION}.${OS}-${ARCH}.tar.gz
+```
+Set up environment to use Go (add Go path to .bashrc file):
+```
+echo 'export GOPATH=${HOME}/go' >> ~/.bashrc && \
+  echo 'export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin' >> ~/.bashrc && \
+  source ~/.bashrc
+```
+Install golangci-lint:
+```
+curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh |
+  sh -s -- -b $(go env GOPATH)/bin v1.21.0
+```
+Clone the Singularity git repository from the source:
+```
+mkdir -p ${GOPATH}/src/github.com/sylabs && \
+  cd ${GOPATH}/src/github.com/sylabs && \
+  git clone https://github.com/sylabs/singularity.git && \
+  cd singularity
+```
+To build a stable version of Singularity, check out a release tag before compiling:
+```
+git checkout v3.6.3
+```
+Build Singularity from source code:
+```
+cd ${GOPATH}/src/github.com/sylabs/singularity && \
+  ./mconfig && \
+  cd ./builddir && \
+  make && \
+  sudo make install
+```
+You can check the specific version of your Singularity install using the following command:
+```
+singularity version
+```
+Once Singularity is built, clone the compiled GenomeChronicler git repository into your home directory:
+```
+git clone https://github.com/PGP-UK/GenomeChronicler.git
+```
+Download the pre-packaged GenomeChronicler image from SingularityHub:
+```
+cd GenomeChronicler
+singularity pull shub://PGP-UK/GenomeChronicler
+```
+After cloning this repository, run the SetupMeFirst.sh script in your local system to retrieve the extra files needed to run the pipeline (around 10GB total, so too large to have included in the git repository).
+````
+~/GenomeChronicler/SetupMeFirst.sh
+```
