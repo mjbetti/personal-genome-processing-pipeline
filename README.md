@@ -12,3 +12,31 @@ The workflow for setting up and running GenomeChronicler is based off of the tur
 Detailed genetic ancestry reporting, as well as copy number variant (CNV) calling are areas of interest for adding greater functionality to this workflow.
 
 ## Getting started
+### Installing dependencies
+The easiest way to install all of the required tools is via a package manager such as Anaconda. In this particular case, Miniconda3 (py37_4.8.3, linux-64) was used to install all of the following dependencies:
+
+* fastqc (0.11.9)
+* bwa (0.7.17)
+* picard (2.23.9)
+* gatk (4.1.9.0)
+* java (OpenJDK) (11.0.6)
+* R (4.0.3)
+* ggplot2 (3.1.1)
+* r-gplots (from Anaconda) (3.0.1)
+* r-gsalib (from Anaconda) (2.1)
+* samtools (1.11)
+* vcftools (0.1.16)
+
+### Downloading reference files
+Most of the required reference files can be downloaded from teh Broad Institute's Google Cloud Bucket (https://console.cloud.google.com/storage/browser/_details/genomics-public-data/resources/broad/hg38/v0/).
+
+In total, one will need the following files:
+* GRCh38 (hg38) reference genome FASTA (resources-broad-hg38-v0-Homo_sapiens_assembly38.fasta)
+* Mills and 1000 Genomes gold standard indels (resources-broad-hg38-v0-Mills_and_1000G_gold_standard.indels.hg38.vcf)
+* 1000 Genomes Phase 1 high-confidence SNPs (resources-broad-hg38-v0-1000G_phase1.snps.high_confidence.hg38.vcf)
+* Omni reference panel (resources-broad-hg38-v0-1000G_omni2.5.hg38.vcf)
+* HapMap reference panel (resources-broad-hg38-v0-hapmap_3.3.hg38.vcf)
+
+There are variable assignments in the script for ClinVar and dbSNP reference files, as well, but these are not actually used in this workflow.
+
+
