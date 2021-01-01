@@ -28,7 +28,7 @@ The easiest way to install all of the required tools is via a package manager su
 * vcftools (0.1.16)
 
 ### Downloading reference files
-Most of the required reference files can be downloaded from teh Broad Institute's Google Cloud Bucket (https://console.cloud.google.com/storage/browser/_details/genomics-public-data/resources/broad/hg38/v0/).
+Most of the required reference files can be downloaded from the Broad Institute's Google Cloud Bucket (https://console.cloud.google.com/storage/browser/_details/genomics-public-data/resources/broad/hg38/v0/).
 
 In total, one will need the following files:
 * GRCh38 (hg38) reference genome FASTA (resources-broad-hg38-v0-Homo_sapiens_assembly38.fasta)
