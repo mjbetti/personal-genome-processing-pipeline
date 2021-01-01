@@ -128,6 +128,8 @@ Once Singularity is built, clone the compiled GenomeChronicler git repository in
 ```
 git clone https://github.com/PGP-UK/GenomeChronicler.git
 ```
+
+##Installing and running GenomeChronicler
 Download the pre-packaged GenomeChronicler image from SingularityHub:
 ```
 cd GenomeChronicler
