@@ -139,7 +139,7 @@ After cloning this repository, run the ```SetupMeFirst.sh``` script in your loca
 ```
 ~/GenomeChronicler/SetupMeFirst.sh
 ```
-Because the input BAM appears to need to be in the same directory as the ```GenomeChronicler_latest.sif``` Singularity file, the aligned BAM file and its corresponding index (ending in .bai) should next be copied to the ```GenomeChronicler/``` directory. Attempting to use a symbolic link instead to avoid duplicating files did not seem to work.
+Because the input BAM appears to need to be in the same directory as the ```GenomeChronicler_latest.sif``` Singularity file, the aligned BAM file and its corresponding index (ending in ```.bai```) should next be copied to the ```GenomeChronicler/``` directory. Attempting to use a symbolic link instead to avoid duplicating files did not seem to work.
 
 Once the BAM is copied over, navigate to the ```GenomeChronicler/``` directory and run the following command:
 ```
