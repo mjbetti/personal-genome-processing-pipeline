@@ -142,4 +142,7 @@ Once the BAM is copied over, navigate to the GenomeChronicler/ directory and run
 singularity run GenomeChronicler_latest.sif --bamFile=mb_hg38_60820188479382.sorted.merged.sorted.marked_duplicates.recalibrated.bam
 ```
 
-This command should generate a new results directory inside of GenomeChronicler/results/ containing the PDF variant annotations report, as well as corresponding .txt, .xlsx, and .vcf.gz files.
+This command should generate a new results directory inside of GenomeChronicler/results/ containing the PDF variant annotations report, as well as corresponding .txt, .xlsx, and .vcf.gz files, such as the following path:
+```
+~/GenomeChronicler/results/results_mb_hg38_60820188479382.sorted.merged.sorted.marked_duplicatesibrated
+```
