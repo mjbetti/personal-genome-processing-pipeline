@@ -40,4 +40,12 @@ In total, one will need the following files:
 There are variable assignments in the script for ClinVar and dbSNP reference files, as well, but these are not actually used in this workflow.
 
 ## Running the pipeline script
+Before running the **personal_genome_processing_pipeline.sh** script, one should set preffered paths for all of the variables declared at the top:
 
+* MAIN_DIR - The main root directory to which all sub-directories and output files will be written to
+* FASTQ1 - The first paired-end FASTQ file (forward reads)
+* FASTQ2 - The second paired-end FASTQ file (reverse reads)
+* OUT_PREF - A string containing the prefix with which all output files will be named
+* FASTQC_OUT - The output directory to which fastqc results will be written
+* REF_GENOME - Directory containing the reference genome FASTA
+* READ_GROUPS - A string containing all of the read groups within your sequencing data. If unknown, for Dante Labs data, at least, one can easily find read groups by running
