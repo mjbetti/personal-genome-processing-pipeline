@@ -73,7 +73,7 @@ fastqc -o $FASTQC_OUT $FASTQ1 $FASTQ2
 Once this script is completely finished running, the most significant files that can be used for downstream analysis will be ```$MAIN_DIR\/$OUT_PREF\.sorted.merged.sorted.marked_duplicates.recalibrated.bam``` (BAM containing your aligned reads), ```$MAIN_DIR\/$OUT_PREF\.recal.snp.indel.vcf.gz``` (VCF cotaining SNPs and indels), ```$MAIN_DIR\/$OUT_PREF\.snp.vcf.gz``` (VCF containing SNPs only), and ```$MAIN_DIR\/$OUT_PREF\.indel.vcf.gz``` (VCF containing indels only). 
 
 ## Initial variant annotation using GenomeChronicler
-### Installing Golang and Singlularity (paraphrased from Golang and Singularity documentation)
+### Installing Golang and Singlularity (summarized from Golang and Singularity documentation)
 The easiest way to run GenomeChronicler is via a Singularity container, which in turn requires a Golang installation. Running Singularity containers is very similar to Docker, and more information about Singularity can be found at the following link: https://sylabs.io/guides/3.1/user-guide/quick_start.html. Go installation documentation: https://golang.org/doc/install. 
 
 GenomeChronicler only seems to work with human genome build GRCh38, so acces to a wider set of downstream analysis tools is a tangible benefit of realigning your reads to the latest build.
@@ -84,13 +84,13 @@ sudo apt-get update && \
 sudo apt-get install -y build-essential \
 libseccomp-dev pkg-config squashfs-tools cryptsetup
 ```
-Install Golang if not already on your system. If you are updating from a older version, remove /usr/local/go before reinstalling the latest version:
+Install Golang if not already on your system. If you are updating from a older version, remove ```/usr/local/go``` before reinstalling the latest version:
 ```
 export VERSION=1.14.9 OS=linux ARCH=amd64  #alter these variables as required to align with user system
 wget -O /tmp/go${VERSION}.${OS}-${ARCH}.tar.gz https://dl.google.com/go/go${VERSION}.${OS}-${ARCH}.tar.gz && \
   sudo tar -C /usr/local -xzf /tmp/go${VERSION}.${OS}-${ARCH}.tar.gz
 ```
-Set up environment to use Go (add Go path to .bashrc file):
+Set up environment to use Go (add Go path to ```.bashrc``` file):
 ```
 echo 'export GOPATH=${HOME}/go' >> ~/.bashrc && \
   echo 'export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin' >> ~/.bashrc && \
@@ -146,7 +146,7 @@ Once the BAM is copied over, navigate to the ```GenomeChronicler/``` directory a
 singularity run GenomeChronicler_latest.sif --bamFile=mb_hg38_60820188479382.sorted.merged.sorted.marked_duplicates.recalibrated.bam
 ```
 
-This command should generate a new results directory inside of ```GenomeChronicler/results/``` containing the PDF variant annotations report, as well as corresponding .txt, .xlsx, and .vcf.gz files, such as the following path:
+This command should generate a new results directory inside of ```GenomeChronicler/results/``` containing the PDF variant annotations report, as well as corresponding ```.txt```, ```.xlsx```, and ```.vcf.gz``` files, such as the following path:
 ```
 ~/GenomeChronicler/results/results_mb_hg38_60820188479382.sorted.merged.sorted.marked_duplicatesibrated
 ```
