@@ -70,4 +70,4 @@ mkdir $FASTQC_OUT
 fastqc -o $FASTQC_OUT $FASTQ1 $FASTQ2
 ```
 
-Once this script is completely finished running, the most significant files that can be used for downstream analysis will be *$MAIN_DIR\/$OUT_PREF\.sorted.merged.sorted.marked_duplicates.recalibrated.bam* (BAM containing your aligned reads), *$MAIN_DIR\/$OUT_PREF\.recal.snp.indel.vcf.gz* (VCF cotaining SNPs and indels), *$MAIN_DIR\/$OUT_PREF\.snp.vcf.gz* (VCF containing SNPs only), and *$MAIN_DIR\/$OUT_PREF\.indel.vcf.gz* (VCF containing indels only). 
+Once this script is completely finished running, the most significant files that can be used for downstream analysis will be **$MAIN_DIR\/$OUT_PREF\.sorted.merged.sorted.marked_duplicates.recalibrated.bam** (BAM containing your aligned reads), **$MAIN_DIR\/$OUT_PREF\.recal.snp.indel.vcf.gz** (VCF cotaining SNPs and indels), **$MAIN_DIR\/$OUT_PREF\.snp.vcf.gz** (VCF containing SNPs only), and **$MAIN_DIR\/$OUT_PREF\.indel.vcf.gz** (VCF containing indels only). 
