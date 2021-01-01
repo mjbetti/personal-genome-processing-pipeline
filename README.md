@@ -13,7 +13,7 @@ Detailed genetic ancestry reporting, as well as copy number variant (CNV) callin
 
 ## Getting started
 ### Installing dependencies
-The easiest way to install all of the required tools is via a package manager such as Anaconda. In this particular case, Miniconda3 (py37_4.8.3, linux-64) was used to install all of the following dependencies:
+The easiest way to install all of the required tools is via a package manager such as Anaconda (https://docs.conda.io/en/latest/miniconda.html). In this particular case, Miniconda3 (py37_4.8.3, linux-64) was used to install all of the following dependencies:
 
 * fastqc (0.11.9)
 * bwa (0.7.17)
