@@ -15,17 +15,17 @@ Detailed genetic ancestry reporting, as well as copy number variant (CNV) callin
 ### Installing dependencies
 The easiest way to install all of the required tools is via a package manager such as Anaconda (https://docs.conda.io/en/latest/miniconda.html). In this particular case, Miniconda3 (py37_4.8.3, linux-64) was used to install all of the following dependencies:
 
-* fastqc (0.11.9)
-* bwa (0.7.17)
-* picard (2.23.9)
-* gatk (4.1.9.0)
-* java (OpenJDK) (11.0.6)
-* R (4.0.3)
-* ggplot2 (3.1.1)
-* r-gplots (from Anaconda) (3.0.1)
-* r-gsalib (from Anaconda) (2.1)
-* samtools (1.11)
-* vcftools (0.1.16)
+* ```fastqc``` (0.11.9)
+* ```bwa``` (0.7.17)
+* ```picard``` (2.23.9)
+* ```gatk``` (4.1.9.0)
+* ```java (OpenJDK)``` (11.0.6)
+* ```R``` (4.0.3)
+* ```ggplot2``` (3.1.1)
+* ```r-gplots``` (from Anaconda) (3.0.1)
+* ```r-gsalib``` (from Anaconda) (2.1)
+* ```samtools``` (1.11)
+* ```vcftools``` (0.1.16)
 
 ### Downloading reference files
 Most of the required reference files can be downloaded from the Broad Institute's Google Cloud Bucket (https://console.cloud.google.com/storage/browser/_details/genomics-public-data/resources/broad/hg38/v0/).
