@@ -39,4 +39,5 @@ In total, one will need the following files:
 
 There are variable assignments in the script for ClinVar and dbSNP reference files, as well, but these are not actually used in this workflow.
 
+## Running the pipeline script
 
