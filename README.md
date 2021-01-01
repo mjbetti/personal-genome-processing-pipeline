@@ -48,4 +48,8 @@ Before running the **personal_genome_processing_pipeline.sh** script, one should
 * OUT_PREF - A string containing the prefix with which all output files will be named
 * FASTQC_OUT - The output directory to which fastqc results will be written
 * REF_GENOME - Directory containing the reference genome FASTA
-* READ_GROUPS - A string containing all of the read groups within your sequencing data. If unknown, for Dante Labs data, at least, one can easily find read groups by running
+* READ_GROUPS - A string containing all of the read groups within your sequencing data. If unknown, for Dante Labs data, at least, one can easily find read groups by using the following command on one's hg19-aligned BAM file.
+
+```
+samtools view -H aligned_hg19.bam | grep '@RG
+```
