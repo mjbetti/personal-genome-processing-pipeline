@@ -180,6 +180,16 @@ gatk ApplyVQSR \
     -mode INDEL
 
 #Split the final VCF output into two separate SNP and indel VCF files
-vcftools --gzvcf $MAIN_DIR\/$OUT_PREF\.recal.snp.indel.vcf.gz --remove-indels --recode --recode-INFO-all --stdout | gzip -c >  $MAIN_DIR\/$OUT_PREF\.snp.vcf.gz
+vcftools \
+--gzvcf $MAIN_DIR\/$OUT_PREF\.recal.snp.indel.vcf.gz \
+--remove-indels \
+--recode \
+--recode-INFO-all \
+--stdout | gzip -c >  $MAIN_DIR\/$OUT_PREF\.snp.vcf.gz
 
-vcftools --gzvcf $MAIN_DIR\/$OUT_PREF\.recal.snp.indel.vcf.gz --keep-only-indels --recode --recode-INFO-all --stdout | gzip -c > $MAIN_DIR\/$OUT_PREF\.indel.vcf.gz
+vcftools \
+--gzvcf $MAIN_DIR\/$OUT_PREF\.recal.snp.indel.vcf.gz \
+--keep-only-indels \
+--recode \
+--recode-INFO-all \
+--stdout | gzip -c > $MAIN_DIR\/$OUT_PREF\.indel.vcf.gz
