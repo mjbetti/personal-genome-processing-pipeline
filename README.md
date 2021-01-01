@@ -135,3 +135,11 @@ After cloning this repository, run the SetupMeFirst.sh script in your local syst
 ```
 ~/GenomeChronicler/SetupMeFirst.sh
 ```
+Because the input BAM appears to need to be in the same directory as the GenomeChronicler_latest.sif Singularity file, the aligned BAM file and its corresponding index (ending in .bai) should next be copied to the GenomeChronicler/ directory. Attempting to use a symbolic link instead to avoid duplicating files did not seem to work.
+
+Once the BAM is copied over, navigate to the GenomeChronicler/ directory and run the following command:
+```
+singularity run GenomeChronicler_latest.sif --bamFile=mb_hg38_60820188479382.sorted.merged.sorted.marked_duplicates.recalibrated.bam
+```
+
+This command should generate a new results directory inside of GenomeChronicler/results/ containing the PDF variant annotations report, as well as corresponding .txt, .xlsx, and .vcf.gz files.
