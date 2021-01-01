@@ -74,7 +74,9 @@ Once this script is completely finished running, the most significant files that
 
 ## Initial variant annotation using GenomeChronicler
 ### Installing Golang and Singlularity (paraphrased from Golang and Singularity documentation)
-The easiest way to run GenomeChronicler is via a Singularity container, which in turn requires a Golang installation. Running Singularity containers is very similar to Docker, and more information about Singularity can be found at the following link: https://sylabs.io/guides/3.1/user-guide/quick_start.html. Go installation documentation: https://golang.org/doc/install. GenomeChronicler only seems to work with human genome build GRCh38, so acces to a wider set of downstream analysis tools is a tangible benefit of realigning your reads to the latest build.
+The easiest way to run GenomeChronicler is via a Singularity container, which in turn requires a Golang installation. Running Singularity containers is very similar to Docker, and more information about Singularity can be found at the following link: https://sylabs.io/guides/3.1/user-guide/quick_start.html. Go installation documentation: https://golang.org/doc/install. 
+
+GenomeChronicler only seems to work with human genome build GRCh38, so acces to a wider set of downstream analysis tools is a tangible benefit of realigning your reads to the latest build.
 
 For use with an Ubuntu Linux installation, one first needs to insure that all required development tools and libraries are installed on the system:
 ```
