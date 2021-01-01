@@ -1,4 +1,4 @@
-#Installation of the following commandline tools is required: fastqc, bwa, picard, gatk, java 8 (OpenJDK), ggplot2, r-gplots, r-gsalib, samtools, and vcftools. The easiest way to install all of these is via Anaconda.
+#Installation of the following commandline tools is required: fastqc, bwa, picard, gatk, java (OpenJDK), ggplot2, r-gplots, r-gsalib, samtools, and vcftools. The easiest way to install all of these is via Anaconda.
 
 #The GRCh38 Reference Sequence used here was downloaded from https://console.cloud.google.com/storage/browser/_details/genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.fasta
 #dbSNP file downloaded from dbSNP FTP (https://ftp.ncbi.nlm.nih.gov/snp/organisms/human_9606_b151_GRCh38p7/VCF/GATK/00-All.vcf.gz)
