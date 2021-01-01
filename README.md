@@ -132,6 +132,6 @@ cd GenomeChronicler
 singularity pull shub://PGP-UK/GenomeChronicler
 ```
 After cloning this repository, run the SetupMeFirst.sh script in your local system to retrieve the extra files needed to run the pipeline (around 10GB total, so too large to have included in the git repository).
-````
+```
 ~/GenomeChronicler/SetupMeFirst.sh
 ```
