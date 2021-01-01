@@ -48,8 +48,25 @@ Before running the **personal_genome_processing_pipeline.sh** script, one should
 * OUT_PREF - A string containing the prefix with which all output files will be named
 * FASTQC_OUT - The output directory to which fastqc results will be written
 * REF_GENOME - Directory containing the reference genome FASTA
-* READ_GROUPS - A string containing all of the read groups within your sequencing data. If unknown, for Dante Labs data, at least, one can easily find read groups by using the following command on one's hg19-aligned BAM file.
-
+* READ_GROUPS - A string containing all of the read groups within your sequencing data. If unknown, for Dante Labs data, at least, one can easily find read groups by using the following command on one's hg19-aligned BAM file:
 ```
 samtools view -H aligned_hg19.bam | grep '@RG
 ```
+* TMP_DIR - A directory that will be generated to temporarily store intermediate files over the course of the workflow
+* INTER_DIR - A directory to which intermediate files will be saved (such as pre-filtered BAMs and VCFs)
+* MILLS, SNPs_1000G, OMNI, HAPMAP - Paths to the required reference files described above
+* DBSNP, CLINVAR, and CLINVAR_WITH_CHR - Paths to the non-required and unused DBSNP and CLINVAR reference files. These variable paths can simply be left as-is.
+* THREADS - The number of CPU threads that one wishes to use (if unsure how many to use, 1 is likely the safest option)
+* RAM - The amount of RAM (in GB) that one wishes to use (if unsure, 1 is likely the safest option)
+
+Once all variable paths are properly specified, one should be able to run the script, either via submission to a job scheduler (SLURM or LSF) or by simply calling the script directly in a Linux terminal:
+```
+./personal_genome_processing_pipeline.sh
+```
+
+If one is unsure of the suitability of their FASTQ read depth/quality, it would be best to run only the fastqc command initially and evaluate those results before deciding if the quality is high enough to merit downstream read mapping:
+```
+mkdir $FASTQC_OUT
+fastqc -o $FASTQC_OUT $FASTQ1 $FASTQ2
+```
+
