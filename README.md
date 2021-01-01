@@ -31,33 +31,33 @@ The easiest way to install all of the required tools is via a package manager su
 Most of the required reference files can be downloaded from the Broad Institute's Google Cloud Bucket (https://console.cloud.google.com/storage/browser/_details/genomics-public-data/resources/broad/hg38/v0/).
 
 In total, one will need the following files:
-* GRCh38 (hg38) reference genome FASTA (resources-broad-hg38-v0-Homo_sapiens_assembly38.fasta)
-* Mills and 1000 Genomes gold standard indels (resources-broad-hg38-v0-Mills_and_1000G_gold_standard.indels.hg38.vcf)
-* 1000 Genomes Phase 1 high-confidence SNPs (resources-broad-hg38-v0-1000G_phase1.snps.high_confidence.hg38.vcf)
-* Omni reference panel (resources-broad-hg38-v0-1000G_omni2.5.hg38.vcf)
-* HapMap reference panel (resources-broad-hg38-v0-hapmap_3.3.hg38.vcf)
+* GRCh38 (hg38) reference genome FASTA (```resources-broad-hg38-v0-Homo_sapiens_assembly38.fasta```)
+* Mills and 1000 Genomes gold standard indels (```resources-broad-hg38-v0-Mills_and_1000G_gold_standard.indels.hg38.vcf```)
+* 1000 Genomes Phase 1 high-confidence SNPs (```resources-broad-hg38-v0-1000G_phase1.snps.high_confidence.hg38.vcf```)
+* Omni reference panel (```resources-broad-hg38-v0-1000G_omni2.5.hg38.vcf```)
+* HapMap reference panel (```resources-broad-hg38-v0-hapmap_3.3.hg38.vcf```)
 
 There are variable assignments in the script for ClinVar and dbSNP reference files, as well, but these are not actually used in this workflow.
 
 ## Running the pipeline script
 Before running the **personal_genome_processing_pipeline.sh** script, one should set preffered paths for all of the variables declared at the top:
 
-* MAIN_DIR - The main root directory to which all sub-directories and output files will be written to
-* FASTQ1 - The first paired-end FASTQ file (forward reads)
-* FASTQ2 - The second paired-end FASTQ file (reverse reads)
-* OUT_PREF - A string containing the prefix with which all output files will be named
-* FASTQC_OUT - The output directory to which fastqc results will be written
-* REF_GENOME - Directory containing the reference genome FASTA
-* READ_GROUPS - A string containing all of the read groups within your sequencing data. If unknown, for Dante Labs data, at least, one can easily find read groups by using the following command on one's hg19-aligned BAM file:
+* ```MAIN_DIR``` - The main root directory to which all sub-directories and output files will be written to
+* ```FASTQ1``` - The first paired-end FASTQ file (forward reads)
+* ```FASTQ2``` - The second paired-end FASTQ file (reverse reads)
+* ```OUT_PREF``` - A string containing the prefix with which all output files will be named
+* ```FASTQC_OUT``` - The output directory to which fastqc results will be written
+* ```REF_GENOME``` - Directory containing the reference genome FASTA
+* ```READ_GROUPS``` - A string containing all of the read groups within your sequencing data. If unknown, for Dante Labs data, at least, one can easily find read groups by using the following command on one's hg19-aligned BAM file:
 ```
 samtools view -H aligned_hg19.bam | grep '@RG
 ```
-* TMP_DIR - A directory that will be generated to temporarily store intermediate files over the course of the workflow
-* INTER_DIR - A directory to which intermediate files will be saved (such as pre-filtered BAMs and VCFs)
-* MILLS, SNPs_1000G, OMNI, HAPMAP - Paths to the required reference files described above
-* DBSNP, CLINVAR, and CLINVAR_WITH_CHR - Paths to the non-required and unused DBSNP and CLINVAR reference files. These variable paths can simply be left as-is.
-* THREADS - The number of CPU threads that one wishes to use (if unsure how many to use, 1 is likely the safest option)
-* RAM - The amount of RAM (in GB) that one wishes to use (if unsure, 1 is likely the safest option)
+* ```TMP_DIR``` - A directory that will be generated to temporarily store intermediate files over the course of the workflow
+* ```INTER_DIR``` - A directory to which intermediate files will be saved (such as pre-filtered BAMs and VCFs)
+* ```MILLS```, ```SNPs_1000G```, ```OMNI```, ```HAPMAP``` - Paths to the required reference files described above
+* ```DBSNP```, ```CLINVAR```, and ```CLINVAR_WITH_CHR``` - Paths to the non-required and unused ```DBSNP``` and ```CLINVAR``` reference files. These variable paths can simply be left as-is.
+* ```THREADS``` - The number of CPU threads that one wishes to use (if unsure how many to use, 1 is likely the safest option)
+* ```RAM``` - The amount of RAM (in GB) that one wishes to use (if unsure, 1 is likely the safest option)
 
 Once all variable paths are properly specified, one should be able to run the script, either via submission to a job scheduler (SLURM or LSF) or by simply calling the script directly in a Linux terminal:
 ```
@@ -70,7 +70,7 @@ mkdir $FASTQC_OUT
 fastqc -o $FASTQC_OUT $FASTQ1 $FASTQ2
 ```
 
-Once this script is completely finished running, the most significant files that can be used for downstream analysis will be **$MAIN_DIR\/$OUT_PREF\.sorted.merged.sorted.marked_duplicates.recalibrated.bam** (BAM containing your aligned reads), **$MAIN_DIR\/$OUT_PREF\.recal.snp.indel.vcf.gz** (VCF cotaining SNPs and indels), **$MAIN_DIR\/$OUT_PREF\.snp.vcf.gz** (VCF containing SNPs only), and **$MAIN_DIR\/$OUT_PREF\.indel.vcf.gz** (VCF containing indels only). 
+Once this script is completely finished running, the most significant files that can be used for downstream analysis will be ```$MAIN_DIR\/$OUT_PREF\.sorted.merged.sorted.marked_duplicates.recalibrated.bam``` (BAM containing your aligned reads), ```$MAIN_DIR\/$OUT_PREF\.recal.snp.indel.vcf.gz``` (VCF cotaining SNPs and indels), ```$MAIN_DIR\/$OUT_PREF\.snp.vcf.gz``` (VCF containing SNPs only), and ```$MAIN_DIR\/$OUT_PREF\.indel.vcf.gz``` (VCF containing indels only). 
 
 ## Initial variant annotation using GenomeChronicler
 ### Installing Golang and Singlularity (paraphrased from Golang and Singularity documentation)
@@ -135,18 +135,18 @@ Download the pre-packaged GenomeChronicler image from SingularityHub:
 cd GenomeChronicler
 singularity pull shub://PGP-UK/GenomeChronicler
 ```
-After cloning this repository, run the SetupMeFirst.sh script in your local system to retrieve the extra files needed to run the pipeline (around 10GB total, so too large to have included in the git repository).
+After cloning this repository, run the ```SetupMeFirst.sh``` script in your local system to retrieve the extra files needed to run the pipeline (around 10GB total, so too large to have included in the git repository).
 ```
 ~/GenomeChronicler/SetupMeFirst.sh
 ```
-Because the input BAM appears to need to be in the same directory as the GenomeChronicler_latest.sif Singularity file, the aligned BAM file and its corresponding index (ending in .bai) should next be copied to the GenomeChronicler/ directory. Attempting to use a symbolic link instead to avoid duplicating files did not seem to work.
+Because the input BAM appears to need to be in the same directory as the ```GenomeChronicler_latest.sif``` Singularity file, the aligned BAM file and its corresponding index (ending in .bai) should next be copied to the ```GenomeChronicler/``` directory. Attempting to use a symbolic link instead to avoid duplicating files did not seem to work.
 
-Once the BAM is copied over, navigate to the GenomeChronicler/ directory and run the following command:
+Once the BAM is copied over, navigate to the ```GenomeChronicler/``` directory and run the following command:
 ```
 singularity run GenomeChronicler_latest.sif --bamFile=mb_hg38_60820188479382.sorted.merged.sorted.marked_duplicates.recalibrated.bam
 ```
 
-This command should generate a new results directory inside of GenomeChronicler/results/ containing the PDF variant annotations report, as well as corresponding .txt, .xlsx, and .vcf.gz files, such as the following path:
+This command should generate a new results directory inside of ```GenomeChronicler/results/``` containing the PDF variant annotations report, as well as corresponding .txt, .xlsx, and .vcf.gz files, such as the following path:
 ```
 ~/GenomeChronicler/results/results_mb_hg38_60820188479382.sorted.merged.sorted.marked_duplicatesibrated
 ```
