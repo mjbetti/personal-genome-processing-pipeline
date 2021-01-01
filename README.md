@@ -40,7 +40,7 @@ In total, one will need the following files:
 There are variable assignments in the script for ClinVar and dbSNP reference files, as well, but these are not actually used in this workflow.
 
 ## Running the pipeline script
-Before running the **personal_genome_processing_pipeline.sh** script, one should set preffered paths for all of the variables declared at the top:
+Before running the ```personal_genome_processing_pipeline.sh``` script, one should set preffered paths for all of the variables declared at the top:
 
 * ```MAIN_DIR``` - The main root directory to which all sub-directories and output files will be written to
 * ```FASTQ1``` - The first paired-end FASTQ file (forward reads)
